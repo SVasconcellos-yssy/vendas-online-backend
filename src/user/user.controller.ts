@@ -10,7 +10,7 @@ import {
 import { CreateUserDto } from './dtos/createUser.dto';
 import { UserService } from './user.service';
 import { UserEntity } from './interfaces/user.entity';
-import { RetunrUserDto } from './dtos/returnUser.dto';
+import { ReturnUserDto } from './dtos/returnUser.dto';
 
 @Controller('user')
 export class UserController {
@@ -23,15 +23,15 @@ export class UserController {
   }
 
   @Get()
-  async getAllUsers(): Promise<RetunrUserDto[]> {
+  async getAllUsers(): Promise<ReturnUserDto[]> {
     return (await this.userService.getAllUser()).map(
-      (userEntity) => new RetunrUserDto(userEntity),
+      (userEntity) => new ReturnUserDto(userEntity),
     );
   }
 
   @Get('/:userId')
-  async getUserById(@Param('userId') userId: number): Promise<RetunrUserDto> {
-    return new RetunrUserDto(
+  async getUserById(@Param('userId') userId: number): Promise<ReturnUserDto> {
+    return new ReturnUserDto(
       await this.userService.getUserByIdUsingRelations(userId),
     );
   }

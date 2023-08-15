@@ -1,7 +1,7 @@
 import { ReturnAddressDto } from 'src/address/dtos/returnAdress.dto';
 import { UserEntity } from '../interfaces/user.entity';
 
-export class RetunrUserDto {
+export class ReturnUserDto {
   id: number;
   name: string;
   email: string;
