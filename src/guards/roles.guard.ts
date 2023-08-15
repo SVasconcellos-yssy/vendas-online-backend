@@ -13,7 +13,6 @@ export class RolesGuard implements CanActivate {
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    console.log(ROLES_KEY);
     const requiredRoles = this.reflector.getAllAndOverride<UserType[]>(
       ROLES_KEY,
       [context.getHandler(), context.getClass()],
@@ -33,9 +32,6 @@ export class RolesGuard implements CanActivate {
       return false;
     }
 
-    console.log(loginPayload);
-    console.log(loginPayload.typeUser);
-    console.log(requiredRoles);
     const { user } = context.switchToHttp().getRequest();
     return requiredRoles.some((role) => role === loginPayload.typeUser);
   }
